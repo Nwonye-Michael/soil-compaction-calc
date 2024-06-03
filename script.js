@@ -1,0 +1,32 @@
+const calculate = () => {
+  const M1 = document.getElementsByClassName("M1Input")[0].value
+  const M2 = document.getElementsByClassName("M2Input")[0].value
+  const M3 = document.getElementsByClassName("M3Input")[0].value
+
+  const waterContentResult =
+    document.getElementsByClassName("waterContentAnswer")[0]
+  const emptyMould = parseFloat(
+    document.getElementsByClassName("emptyMould")[0].value
+  )
+  const compactedMould = parseFloat(
+    document.getElementsByClassName("compactedMould")[0].value
+  )
+  const volumeOfMould = parseFloat(
+    document.getElementsByClassName("volumeOfMould")[0].value
+  )
+  const mddAnswer = document.getElementsByClassName("mddAnswer")[0]
+
+  const waterContent = (M2 - M3) / (M2 - M1)
+  waterContentResult.textContent = `${
+    waterContent.toFixed(2) * 100
+  }% / ${waterContent.toFixed(2)}` // Displaying water content with two decimal places
+
+  // Calculate MDD and display it
+  const mdd =
+    ((compactedMould - emptyMould) * 1000) /
+    (volumeOfMould * (1 + waterContent))
+  mddAnswer.textContent = `${mdd.toFixed(2)}`
+}
+
+const button = document.getElementsByTagName("button")[0]
+button.addEventListener("click", calculate)

@@ -1,0 +1,45 @@
+.container {
+  /* background-color: black; */
+  width: fit-content;
+  height: 100vh;
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+  flex-direction: column;
+  gap: 50px;
+  padding-left: 50px;
+  padding-top: 50px;
+}
+
+.massOfSoil {
+  display: flex;
+  /* justify-content: center; */
+  /* align-items: center; */
+  width: 100%;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.compactedSoil {
+  display: flex;
+  /* justify-content: center; */
+  /* align-items: center; */
+  flex-direction: column;
+  gap: 20px;
+}
+input {
+  padding: 10px;
+  /* min-width: none; */
+  border: 1px solid black;
+  margin-left: 5px;
+  width: 60px;
+}
+body {
+  font-family: "Times New Roman", Times, serif;
+}
+span {
+  display: inline-flex;
+  height: 100%;
+  width: 40px;
+  border-bottom: 1px solid black;
+}
