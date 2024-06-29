@@ -9,9 +9,9 @@
   <body>
     <div class="container">
       <div class="massOfSoil">
-        <div class="">M1 <input type="text" class="M1Input" required /></div>
-        <div class="">M2 <input type="text" class="M2Input" required /></div>
-        <div class="">M3 <input type="text" class="M3Input" required /></div>
+        <div class="">M1 <input type="text" class="M1Input"  /></div>
+        <div class="">M2 <input type="text" class="M2Input"  /></div>
+        <div class="">M3 <input type="text" class="M3Input"  /></div>
 
         <div class="waterContent">
           WC: <span class="waterContentAnswer"></span>
@@ -19,23 +19,35 @@
       </div>
 
       <div class="compactedSoil">
-        <div class="">
-          Empty Mould WEIGHT <input type="text" class="emptyMould" required />
+        <div class="">Given WC : <input type="text" class="givenWC" />
+        
+        
+        </div>
+       <div class="">
+          Empty Mould WEIGHT <input type="text" class="emptyMould" />
         </div>
 
         <div class="">
           Full Mould WEIGHT
-          <input type="text" class="compactedMould" required />
+          <input type="text" class="compactedMould" />
         </div>
 
         <div class="">
-          Volume Of Mould <input type="text" class="volumeOfMould" required />
+          Volume Of Mould in cm<sup>3</sup> <input type="text" class="volumeOfMould" />
         </div>
         <div class="mdd">
           MD: <span class="mddAnswer"></span> + g/cm<sup>3</sup>
         </div>
+      
+            <div class="">      <button type="type" id="compelteValuesButton">Calculate</button></div>
+      <div class=""><button type="type" id="justMD">Calculate just MD</button></div>
       </div>
-      <button type="type">Calculate</button>
+        
+       
+      </div>
+  
+
+      
     </div>
 
     <script src="script.js"></script>

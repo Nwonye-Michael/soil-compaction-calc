@@ -28,5 +28,29 @@ const calculate = () => {
   mddAnswer.textContent = `${mdd.toFixed(2)}`
 }
 
-const button = document.getElementsByTagName("button")[0]
+const calculateMdOnly = () => {
+  const waterContentResult = parseFloat(
+    document.getElementsByClassName("givenWC")[0].value
+  )
+  const emptyMould = parseFloat(
+    document.getElementsByClassName("emptyMould")[0].value
+  )
+  const compactedMould = parseFloat(
+    document.getElementsByClassName("compactedMould")[0].value
+  )
+  const volumeOfMould = parseFloat(
+    document.getElementsByClassName("volumeOfMould")[0].value
+  )
+  const mddAnswer = document.getElementsByClassName("mddAnswer")[0]
+
+  console.log(waterContentResult, emptyMould, compactedMould, volumeOfMould)
+  const mdd =
+    ((compactedMould - emptyMould) * 1000) /
+    (volumeOfMould * (1 + waterContentResult))
+  mddAnswer.textContent = `${mdd.toFixed(2)}`
+}
+
+const button = document.getElementById("compelteValuesButton")
 button.addEventListener("click", calculate)
+const givenButton = document.getElementById("justMD")
+givenButton.addEventListener("click", calculateMdOnly)
