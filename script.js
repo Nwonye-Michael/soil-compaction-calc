@@ -11,9 +11,7 @@ const calculate = () => {
   const compactedMould = parseFloat(
     document.getElementsByClassName("compactedMould")[0].value
   )
-  const volumeOfMould = parseFloat(
-    document.getElementsByClassName("volumeOfMould")[0].value
-  )
+
   const mddAnswer = document.getElementsByClassName("mddAnswer")[0]
 
   const waterContent = (M2 - M3) / (M3 - M1)
@@ -21,8 +19,7 @@ const calculate = () => {
 
   // Calculate MDD and display it
   const mdd =
-    ((compactedMould - emptyMould) * 1000) /
-    (volumeOfMould * (1 + waterContent))
+    ((compactedMould - emptyMould) * 1000) / (926.77 * (1 + waterContent))
   mddAnswer.textContent = `${mdd.toFixed(2)}`
 }
 
@@ -36,15 +33,12 @@ const calculateMdOnly = () => {
   const compactedMould = parseFloat(
     document.getElementsByClassName("compactedMould")[0].value
   )
-  const volumeOfMould = parseFloat(
-    document.getElementsByClassName("volumeOfMould")[0].value
-  )
+
   const mddAnswer = document.getElementsByClassName("mddAnswer")[0]
 
   console.log(waterContentResult, emptyMould, compactedMould, volumeOfMould)
   const mdd =
-    ((compactedMould - emptyMould) * 1000) /
-    (volumeOfMould * (1 + waterContentResult))
+    ((compactedMould - emptyMould) * 1000) / (926.77 * (1 + waterContentResult))
   mddAnswer.textContent = `${mdd.toFixed(2)}`
 }
 
