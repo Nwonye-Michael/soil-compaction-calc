@@ -2,7 +2,7 @@ const calculate = () => {
   const M1 = document.getElementsByClassName("M1Input")[0].value
   const M2 = document.getElementsByClassName("M2Input")[0].value
   const M3 = document.getElementsByClassName("M3Input")[0].value
-
+  console.log(M1, M2, M3)
   const waterContentResult =
     document.getElementsByClassName("waterContentAnswer")[0]
   const emptyMould = parseFloat(
@@ -16,10 +16,8 @@ const calculate = () => {
   )
   const mddAnswer = document.getElementsByClassName("mddAnswer")[0]
 
-  const waterContent = (M2 - M3) / (M2 - M1)
-  waterContentResult.textContent = `${
-    waterContent.toFixed(2) * 100
-  }% / ${waterContent.toFixed(2)}` // Displaying water content with two decimal places
+  const waterContent = (M2 - M3) / (M3 - M1)
+  waterContentResult.textContent = `${(waterContent * 100).toFixed(2)}% ` // Displaying water content with two decimal places
 
   // Calculate MDD and display it
   const mdd =
