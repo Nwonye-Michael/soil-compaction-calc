@@ -1,48 +1,47 @@
-const calculate = () => {
-  const M1 = document.getElementsByClassName("M1Input")[0].value
-  const M2 = document.getElementsByClassName("M2Input")[0].value
-  const M3 = document.getElementsByClassName("M3Input")[0].value
-  console.log(M1, M2, M3)
-  const waterContentResult =
-    document.getElementsByClassName("waterContentAnswer")[0]
-  const emptyMould = parseFloat(
-    document.getElementsByClassName("emptyMould")[0].value
+document.getElementById("run").addEventListener("click", function () {
+  // Get values from input fields
+  let WEIGHT_OF_MOULD = parseFloat(
+    document.getElementById("WEIGHT_OF_MOULD").value
   )
-  const compactedMould = parseFloat(
-    document.getElementsByClassName("compactedMould")[0].value
-  )
+  let WT_OF_CAN = parseFloat(document.getElementById("WT_OF_CAN").value)
+  let targetDD = parseFloat(document.getElementById("targetDD").value)
+  let targetMC = parseFloat(document.getElementById("targetMC").value)
 
-  const mddAnswer = document.getElementsByClassName("mddAnswer")[0]
+  // Function to calculate the weights based on target dry density and moisture content
+  function calculateWeights(targetDD, targetMC) {
+    // Calculate the total weight of the mould + soil
+    let weightMouldSoil =
+      (targetDD * 926.77 * (1 + targetMC / 100)) / 1000 + WEIGHT_OF_MOULD
 
-  const waterContent = (M2 - M3) / (M3 - M1)
-  waterContentResult.textContent = `${(waterContent * 100).toFixed(2)}% ` // Displaying water content with two decimal places
+    // Calculate the weight of dry soil
+    let weightOfDrySoil = WT_OF_CAN + 8 + Math.random() * 6
 
-  // Calculate MDD and display it
-  const mdd =
-    ((compactedMould - emptyMould) * 1000) / (926.77 * (1 + waterContent))
-  mddAnswer.textContent = `${mdd.toFixed(2)}`
-}
+    // Calculate the weight of water
+    let weightOfWater = (targetMC / 100) * weightOfDrySoil
 
-const calculateMdOnly = () => {
-  const waterContentResult = parseFloat(
-    document.getElementsByClassName("givenWC")[0].value
-  )
-  const emptyMould = parseFloat(
-    document.getElementsByClassName("emptyMould")[0].value
-  )
-  const compactedMould = parseFloat(
-    document.getElementsByClassName("compactedMould")[0].value
-  )
+    // Calculate the weight of wet soil (including the can)
+    let weightOfCanWetSoil = WT_OF_CAN + weightOfDrySoil + weightOfWater
 
-  const mddAnswer = document.getElementsByClassName("mddAnswer")[0]
+    // Calculate the weight of dry soil (including the can)
+    let weightOfCanDrySoil = WT_OF_CAN + weightOfDrySoil
 
-  console.log(waterContentResult, emptyMould, compactedMould, volumeOfMould)
-  const mdd =
-    ((compactedMould - emptyMould) * 1000) / (926.77 * (1 + waterContentResult))
-  mddAnswer.textContent = `${mdd.toFixed(2)}`
-}
+    return {
+      weightMouldSoil: weightMouldSoil.toFixed(2),
+      weightOfCanWetSoil: weightOfCanWetSoil.toFixed(2),
+      weightOfCanDrySoil: weightOfCanDrySoil.toFixed(2),
+      weightOfWater: weightOfWater.toFixed(2),
+    }
+  }
 
-const button = document.getElementById("compelteValuesButton")
-button.addEventListener("click", calculate)
-const givenButton = document.getElementById("justMD")
-givenButton.addEventListener("click", calculateMdOnly)
+  // Run the calculation
+  const result = calculateWeights(targetDD, targetMC)
+
+  // Display the result in the result div
+  let resultDiv = document.getElementById("result")
+  resultDiv.innerHTML = `
+    <p>Weight of Mould + Soil (KGMS): ${result.weightMouldSoil}</p>
+    <p>Weight of Can + Wet Soil (GMS): ${result.weightOfCanWetSoil}</p>
+    <p>Weight of Can + Dry Soil (GMS): ${result.weightOfCanDrySoil}</p>
+    <p>Weight of Water (GMS): ${result.weightOfWater}</p>
+  `
+})

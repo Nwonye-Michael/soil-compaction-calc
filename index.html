@@ -3,51 +3,21 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>WAS CALCULATOR</title>
+    <title>Kitchen</title>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <div class="container">
-      <div class="massOfSoil">
-        <div class="">M1 <input type="text" class="M1Input"  /></div>
-        <div class="">M2 <input type="text" class="M2Input"  /></div>
-        <div class="">M3 <input type="text" class="M3Input"  /></div>
+      <h1>CHEF</h1>
+      <input id="WEIGHT_OF_MOULD" type="text" placeholder="WEIGHT_OF_MOULD" />
+      <input id="WT_OF_CAN" type="text" placeholder="WT_OF_CAN" />
+      <input id="targetDD" type="text" placeholder="targetDD" />
+      <input id="targetMC" type="text" placeholder="targetMC" />
+      <button id="run">RUN</button>
 
-        <div class="waterContent">
-          WC: <span class="waterContentAnswer"></span>
-        </div>
-      </div>
-
-      <div class="compactedSoil">
-        <div class="">Given WC : <input type="text" class="givenWC" />
-        
-        
-        </div>
-       <div class="">
-          Empty Mould WEIGHT <input type="text" class="emptyMould" />
-        </div>
-
-        <div class="">
-          Full Mould WEIGHT
-          <input type="text" class="compactedMould" />
-        </div>
-
-        
-        <div class="mdd">
-          MD: <span class="mddAnswer"></span> + g/cm<sup>3</sup>
-        </div>
-      
-            <div class="">      <button type="type" id="compelteValuesButton">Calculate</button></div>
-      <div class=""><button type="type" id="justMD">Calculate just MD</button></div>
-      </div>
-        
-       
-      </div>
-  
-
-      
+      <h2>RESULT</h2>
+      <div id="result"></div>
     </div>
-
     <script src="script.js"></script>
   </body>
 </html>
