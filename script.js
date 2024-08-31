@@ -14,7 +14,7 @@ document.getElementById("run").addEventListener("click", function () {
       (targetDD * 926.77 * (1 + targetMC / 100)) / 1000 + WEIGHT_OF_MOULD
 
     // Calculate the weight of dry soil
-    let weightOfDrySoil = WT_OF_CAN + 8 + Math.random() * 6
+    let weightOfDrySoil = 6 * Math.random() + 8
 
     // Calculate the weight of water
     let weightOfWater = (targetMC / 100) * weightOfDrySoil
@@ -24,12 +24,12 @@ document.getElementById("run").addEventListener("click", function () {
 
     // Calculate the weight of dry soil (including the can)
     let weightOfCanDrySoil = WT_OF_CAN + weightOfDrySoil
-
+    console.log("weight of dry soil", weightOfWater)
     return {
-      weightMouldSoil: weightMouldSoil.toFixed(2),
-      weightOfCanWetSoil: weightOfCanWetSoil.toFixed(2),
-      weightOfCanDrySoil: weightOfCanDrySoil.toFixed(2),
-      weightOfWater: weightOfWater.toFixed(2),
+      weightMouldSoil: weightMouldSoil.toFixed(3),
+      weightOfCanWetSoil: weightOfCanWetSoil.toFixed(3),
+      weightOfCanDrySoil: weightOfCanDrySoil.toFixed(3),
+      weightOfWater: weightOfWater.toFixed(3),
     }
   }
 
@@ -42,6 +42,6 @@ document.getElementById("run").addEventListener("click", function () {
     <p>Weight of Mould + Soil (KGMS): ${result.weightMouldSoil}</p>
     <p>Weight of Can + Wet Soil (GMS): ${result.weightOfCanWetSoil}</p>
     <p>Weight of Can + Dry Soil (GMS): ${result.weightOfCanDrySoil}</p>
-    <p>Weight of Water (GMS): ${result.weightOfWater}</p>
+   
   `
 })
